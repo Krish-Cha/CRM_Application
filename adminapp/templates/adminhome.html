@@ -1,0 +1,71 @@
+{% extends "adminparent.html" %}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 style="text-align:center;">Welcome to {{adminid}}</h1>  
+            <div class="row mt-5">
+                <div class="col-sm-4  mb-3 mb-sm-0">
+                  <div class="card admincard">
+                    <div class="card-body">
+                      <h1 class="card-title">Customer</h1>
+                       <span class="text-success mb-2" style="display: inline-block; text-align: center;font-size: 50px;">{{cust_count}}+</span><br>
+                      <a href="{% url 'adminapp:viewcustomers' %}" class="btn btn-primary">View Customer</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="card admincard">
+                    <div class="card-body">
+                      <h1 class="card-title"> Enquiries</h1>
+                      <span class=" mb-2" style="display: inline-block;color: cyan; text-align: center;font-size: 50px;">{{enq_cust}}+</span><br>
+                      <a href="{% url 'adminapp:viewenquiries' %}" class="btn btn-primary">View Enquiries</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                  <div class="card admincard">
+                    <div class="card-body">
+                      <h1 class="card-title">Complaint</h1>
+                      <span class=" mb-2" style="display: inline-block;color: red; text-align: center;font-size: 50px;">{{comp}}+</span><br>
+                      <a href="{% url 'adminapp:viewcomplains' %}" class="btn btn-primary">View Complaint</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row mt-5">
+
+                <div class="col-sm-4">
+                  <div class="card admincard">
+                    <div class="card-body">
+                      <h1 class="card-title">Feedback</h1>
+                      <span class=" mb-2" style="display: inline-block;color: yellow; text-align: center;font-size: 50px;">{{res}}+</span><br>
+                      <a href="{% url 'adminapp:viewfeedbacks' %}" class="btn btn-primary">View feedback</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                  <div class="card admincard">
+                    <div class="card-body">
+                      <h1 class="card-title">Products</h1>
+                      <span class=" mb-2" style="display: inline-block;color: rgb(140, 255, 0); text-align: center;font-size: 50px;">{{prd}}+</span><br>
+                      <a href="{% url 'adminapp:viewproduct' %}" class="btn btn-primary">View Product</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                  <div class="card admincard">
+                    <div class="card-body">
+                      <h1 class="card-title">Orders</h1>
+                      <span class=" mb-2" style="display: inline-block;color: rgb(0, 13, 255); text-align: center;font-size: 50px;">{{ord}}+</span><br>
+                      <a href="{% url 'adminapp:viewcustorders' %}" class="btn btn-primary">View Orders</a>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>     
+       </div> 
+    </div>
+{% endblock body %}

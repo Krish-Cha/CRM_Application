@@ -1,0 +1,80 @@
+{% extends "parent.html" %}
+{% block main %}
+<style>
+.formconta{
+    background-color: white;
+    margin: auto;
+    width: 80%;
+}
+.formtable{
+    font-size: 25px;
+    margin: auto;
+    width: 80%;
+}
+.formbtn{
+    padding: 8px 35px;
+    font-size: 25px;
+}
+@media screen and (max-width: 530px) {
+    .formconta{
+    background-color: white;
+    margin: auto;
+    width: 100%;
+    }
+    .formtable{
+    font-size: 18px;
+    margin: auto;
+    width: 90%;
+  }
+  .formbtn{
+    padding: 5px 15px;
+    font-size: 19px;
+  }
+}
+
+</style>
+
+<script>
+    function validate(){
+       var id=document.getElementById("userid")
+       var pswd=document.getElementById("password")
+       if (id.value =="" || id ==null ){
+        alert("Please enter userid");
+        id.focus();
+       }
+       else if(pswd.value=="" || pswd.value==null)
+       {
+        alert("Please enter Password");
+        pswd.focus();
+       }
+       else{
+        document.getElementById("frmlogin").submit();
+       }
+    }
+</script>
+
+<h1 class="mt-5" style="text-align: center;margin: 15px 0; text-decoration: underline;">User Login</h1>
+
+{% if msg %}
+    <p style="color: red;text-align: center;">{{msg}}</p>
+{% endif %}
+<div class="container formconta shadow-sm rounded p-5 mt-5 mb-4">
+<form class="form-group" action="" method="post" id="frmlogin" onsubmit="event.preventDefault();validate();">
+    {% csrf_token %}
+    <table class="table formtable">
+        <tr>
+            <td>User Id:</td>
+            <td><input type="text" id="userid" name="userid" class="form-control fs-4 my-2" placeholder="userid"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" id="password" name="password" class="form-control fs-4 my-2" placeholder="Password" id=""></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button type="submit" class="btn btn-outline-primary formbtn my-2">Login</button></td>
+        </tr>
+    </table>
+</form>
+</div>
+{% endblock main %}

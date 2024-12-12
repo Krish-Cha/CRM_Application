@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family:'Times New Roman', Times, serif;
+}
+.leftcont{
+    /* border: 1px solid orangered; */
+    height: 120px;
+    width: 120px;
+    border-radius: 10%;
+    background-image: url('../images/logo.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+.doctor{
+    /* border: 1px solid red; */
+    min-height: 600px;
+    background-image: url('../images/doctor-removebg.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.certificate{
+    /* border: 1px solid; */
+    min-height: 500px;
+    background-image: url('../images/marc-cure-certificate.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}

@@ -1,0 +1,125 @@
+{% extends "parent.html" %}
+{% block main %}
+<script>
+     function validation(){
+        var name=document.getElementById("name");
+        if(name.value=="" || name.value==null){
+            alert("Please Enter your name.");
+            name.focus();
+            return false
+        }
+
+        var address=document.getElementById("address")
+        if (address.value=="" || address.value==null){
+            alert("please enter your address")
+            address.focus();
+            return false
+        }
+
+        var number=document.getElementById("num")
+        var numRegex=/^[0-9]{10}$/
+        if (number.value=="" ||number.value==null || !numRegex.test(number.value)){
+            alert("Please enter valid Mobile number")
+            number.focus();
+            return false
+        }
+
+        var validRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        var mail=document.getElementById("mail");
+      
+        if(mail.value=="" || mail.value==null || !validRegex.test(mail.value) ){
+            alert("please enter your email or valid email");
+            mail.focus();
+            return false
+        }
+
+        var pswRegex=/^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9!@#$%&*]{6,20}$/;
+        var password=document.getElementById("psw")
+        if (!pswRegex.test(password.value) || password.value=="" ||password.value==null){
+            alert("Password must be 6 to 20 digits and must be contain capital,small and spacial symbol with number.")
+            password.focus();
+            return false
+        }
+
+        document.getElementById("frmreg").submit();
+     }
+</script>
+<style>
+.formconta{
+    background-color: white;
+    margin: auto;
+    width: 80%;
+}
+.formtable{
+    font-size: 25px;
+    margin: auto;
+    width: 80%;
+}
+.formbtn{
+    padding: 8px 25px;
+    font-size: 25px;
+}
+@media screen and (max-width: 530px) {
+    .formconta{
+    background-color: white;
+    margin: auto;
+    width: 100%;
+    }
+    .formtable{
+    font-size: 18px;
+    margin: auto;
+    width: 90%;
+  }
+  .formbtn{
+    padding: 5px 15px;
+    font-size: 19px;
+  }
+}
+
+</style>
+
+<h1 class="mt-5" style="text-align: center;margin: 15px 0; text-decoration: underline;">User Registration Form </h1>
+{% if msg %}
+<p style="color: red;text-align: center;">{{msg}}</p>
+{% endif %}
+<div class="container formconta shadow-sm rounded py-5 mt-5">
+<form class="form-group" id="frmreg" action="{% url 'crmapp:registration' %}" method="post" onsubmit="event.preventDefault();validation();">
+    {% csrf_token %}
+    <table class="table formtable my-2">
+        <tr>
+            <td>Name :</td>
+            <td><input type="text" id="name" name="name" class="form-control fs-4 my-2" placeholder="Name..." ></td>
+        </tr>
+        <tr>
+            <td>Select Gender:</td>
+            <td><input class="form-check-input fs-4 my-2" type="radio" name="Gender" value="Male" id="Male"> Male
+            <input class="form-check-input fs-4 my-2" type="radio" name="Gender" value="Female" id="Female"> Female</td>
+        </tr>
+        <tr>
+            <td>Enter Address :</td>
+            <td><textarea name="Address" id="address" class="form-control fs-4 my-2" placeholder="Address.."></textarea></td>
+        </tr>
+        <tr>
+            <td>Contact No. :</td>
+            <td><input type="text" id="num" name="number" class="form-control fs-4 my-2" placeholder="Mobile no..." ></td>
+        </tr>
+        <tr>
+            <td>Email :</td>
+            <td><input type="email" id="mail" name="email" class="form-control fs-4 my-2" placeholder="Enter email..."></td>
+        </tr>
+        <tr>
+            <td>Password :</td>
+            <td><input type="password" id="psw" name="password" class="form-control fs-4 my-2" placeholder="Password..."></td>
+        </tr>
+        <tr>
+            <td>Confirm Password :</td>
+            <td><input type="password" name="Confirm" class="form-control fs-4 my-2" placeholder="Confirm Password..."></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button type="submit" class="btn btn-outline-success formbtn my-2">Register</button></td>
+        </tr>
+    </table>
+</form>
+</div>
+{% endblock main %}

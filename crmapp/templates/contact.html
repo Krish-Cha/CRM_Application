@@ -1,0 +1,110 @@
+{% extends "parent.html" %}
+{% block main %}
+<style>
+    .formconta{
+        background-color: white;
+        margin: auto;
+        width: 80%;
+    }
+    .formtable{
+        font-size: 25px;
+        margin: auto;
+        width: 80%;
+    }
+    .formbtn{
+        padding: 8px 35px;
+        font-size: 25px;
+    }
+    @media screen and (max-width: 530px) {
+        .formconta{
+        background-color: white;
+        margin: auto;
+        width: 100%;
+        }
+        .formtable{
+        font-size: 18px;
+        margin: auto;
+        width: 90%;
+      }
+      .formbtn{
+        padding: 5px 15px;
+        font-size: 19px;
+      }
+    }
+    
+    </style>
+<script>
+       function validation(){
+        var name=document.getElementById("name");
+        if(name.value=="" || name.value==null){
+            alert("Please Enter your name.");
+            name.focus();
+            return false
+        }
+        var number=document.getElementById("num")
+        var numRegex=/^[0-9]{10}$/
+        if (number.value=="" ||number.value==null || !numRegex.test(number.value)){
+            alert("Please enter valid number must be 10 digits.")
+            number.focus();
+            return false
+        }
+        var validRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        var mail=document.getElementById("mail");
+      
+        if(mail.value=="" || mail.value==null || !validRegex.test(mail.value) ){
+            alert("please enter your email or valid email");
+            mail.focus();
+            return false
+        }
+        var sub=document.getElementById("subject")
+        if(sub.value=="" || sub.value==null){
+            alert("Please Enter your subject.");
+            sub.focus();
+            return false
+        }
+        var message=document.getElementById("msg")
+        if(message.value=="" || message.value==null){
+            alert("Please Enter your message.");
+            message.focus();
+            return false
+        }
+        document.getElementById("frmcontact").submit();
+    }
+</script>
+
+<h1 style="text-align: center;margin:15px 0;">Enquire Form</h1>
+{% if msg %}
+<p style="color: green;text-align: center;">{{msg}}</p>
+{% endif %}
+<div class="container formconta shadow-sm rounded p-5 mt-5 mb-4">
+    <form class="form-group" action="" id="frmcontact" method="post" onsubmit="event.preventDefault(); validation();">
+    {% csrf_token %}
+    <table class="table formtable">
+        <tr>
+            <td>Name :</td>
+            <td><input type="text" id="name" name="name" class="form-control fs-4 my-2" placeholder="Name..."></td>
+        </tr>
+        <tr>
+            <td>Contact No. :</td>
+            <td><input type="number" id="num" name="number" class="form-control fs-4 my-2" placeholder="Mobile no..."></td>
+        </tr>
+        <tr>
+            <td>Email :</td>
+            <td><input type="email" id="mail" name="email" class="form-control fs-4 my-2" placeholder="Enter email..."></td>
+        </tr>
+        <tr>
+            <td>Subject :</td>
+            <td><input type="text" id="subject" name="sub" class="form-control fs-4 my-2" placeholder="Subject..."></td>
+        </tr>
+        <tr>
+            <td>Message :</td>
+            <td><textarea name="address" id="msg" class="form-control fs-4 my-2" placeholder="Message..."></textarea></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button type="submit" class="btn btn-outline-primary formbtn my-2">Submit</button></td>
+        </tr>
+    </table>
+</form>
+</div>
+{% endblock main %}

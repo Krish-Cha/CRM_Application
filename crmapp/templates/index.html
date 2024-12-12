@@ -1,0 +1,64 @@
+{% extends "parent.html" %}
+{% block main %}
+<h1 class="mt-5" style="text-align: center; font-weight: bold; text-decoration: underline;">Product Available</h1>
+<!-- <div class="row mt-5 mb-3">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+          <div class="card">
+            <div class="card-body">
+              <h1 class="card-title">Food Supplements</h1>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum eveniet, tempora eaque aliquid culpa, alias facere reprehenderit in, quia ipsam repudiandae. Doloribus eos expedita, quia facere itaque vitae dolor ipsum. </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h1 class="card-title">Ayurvedic Medicines</h1>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi exercitationem id sint ab aspernatur? Doloribus repellat natus repudiandae id doloremque voluptatibus, eveniet, nam dolores dignissimos eum libero enim, accusamus recusandae?</p>
+            </div>
+          </div>
+        </div>
+</div>
+
+<div class="row mb-2">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+          <div class="card">
+            <div class="card-body">
+              <h1 class="card-title">Calcium Supplements</h1>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis quas sed sint, corrupti necessitatibus, fuga amet consequuntur sit mollitia sapiente dolorem quam, dignissimos nihil! Quae sunt tempore repellendus expedita amet!</p>
+              
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h1 class="card-title">Stomach Syrup</h1>
+              <p class="card-text">With supporting text Lorem ipsum dolor sit amet, consectetur below as a natural lead-in to additional content. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, ipsum, aperiam vero tempora error soluta ipsam rerum explicabo officia a odio corporis dicta temporibus commodi ducimus labore excepturi odit eum!</p>
+            </div>
+          </div>
+        </div>
+</div> -->
+
+<div class="container mt-5">       
+  <div class="row px-4">
+    {% for p in prods %}
+    <div class="col-sm-3" style=" width: 320px;">
+    <div class="card  mb-3" style="width: 19rem;">
+      <img src="{{p.productpic.url}}" class="card-img-top img-fluid rounded-start" style="height: 200px;" alt="...">
+      <div class="card-body px-4">
+        <h2 class="card-title">{{p.productname}}</h2>
+        <p class="card-text" style="font-size: 17px;line-height: 10px;">MFG &nbsp;: &nbsp;{{p.mfgdate}}</p>
+        <p class="card-text" style="font-size: 17px;line-height: 10px;">EXP &nbsp;: &nbsp;{{p.expdate}}</p>
+        <p class="card-text" style="font-size: 20px;line-height: 10px;">Price &nbsp; :&nbsp; <span style="color: green; font-size: 25px;">{{p.price}} &#8377;</span></p>
+        <a href="{% url 'crmapp:login' %}" class="btn btn-outline-success mt-2 py-2 px-4">Order Now</a>
+      </div>
+    </div>
+    </div>
+    {% endfor %}
+   </div> 
+</div>
+
+<h1 class="ms-3 pt-3" style="font-weight: bold;">Our Certificates</h1>
+<div class="row certificate"></div>
+{% endblock main %}

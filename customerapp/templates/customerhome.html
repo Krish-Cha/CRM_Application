@@ -1,0 +1,114 @@
+{% extends "customerparent.html" %}
+{% block body %}
+<style>
+  .cardhover:hover{
+    border: 1px solid red;
+    cursor: pointer;
+  }
+</style>
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 style="text-align:center;">Welcome To {{cust.name}}</h1>   
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row mt-5" >
+
+              <div class="col">
+                <div class="card cardhover ms-3" style="width: 25rem;">
+                    <div class="card-body">
+                      <h1 class="card-title">Customer Details</h1>
+                        <table class="table my-2">
+                            <tr>
+                                <th>Name :</th>
+                                <td>{{cust.name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Contact No :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                <td>{{cust.contactno}}</td>
+                            </tr>
+                            <tr>
+                                <th>Email :</th>
+                                <td>{{cust.email}}</td>
+                            </tr>
+                        </table>
+                      <a href="{% url 'customerapp:viewprofile' %}" class="btn btn-outline-primary mt-3 py-3 px-4">Edit Profile</a>
+                    </div>
+                  </div>
+                  </div>
+
+                <div class="col">
+                  <div class="card cardhover ms-3 mt-4" style="width: 25rem;">
+                    <div class="row">
+                    <div class="col-sm-8">
+                    <div class="card-body">
+                      <h1 class="card-title" >Your Orders</h1>
+                      <h1 style="color: orange;font-size: 70px;">{{ord}}+</h1>
+                    </div>
+                    <a href="{% url 'customerapp:vieworders' %}" class="btn btn-outline-primary mb-4 mx-4 py-3 px-4">View Order</a>
+                    </div>
+                    
+                    <div class="col-sm-4">
+                      <div class="container mx-auto" style="margin-top: 50%;padding:50% 0 ;">
+                        <i class="fa-solid fa-truck" style="color: cyan; font-size: 50px;"></i>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  </div>
+                 
+                </div>
+
+              </div>
+            </div>
+
+              <div class="container mt-5"> 
+                <h1 class="my-4 ms-4">Product Available</h1>      
+                <div class="row px-4">
+                  {% for p in prod %}
+                  <div class="col-sm-3" style=" width: 320px;">
+                  <div class="card  mb-3" style="width: 19rem;">
+                    <img src="{{p.productpic.url}}" class="card-img-top img-fluid rounded-start" style="height: 240px;" alt="...">
+                    <div class="card-body px-4">
+                      <h2 class="card-title">{{p.productname}}</h2>
+                      <p class="card-text" style="font-size: 17px;line-height: 10px;">MFG &nbsp;: &nbsp;{{p.mfgdate}}</p>
+                      <p class="card-text" style="font-size: 17px;line-height: 10px;">EXP &nbsp;: &nbsp;{{p.expdate}}</p>
+                      <p class="card-text" style="font-size: 20px;line-height: 10px;">Price &nbsp; :&nbsp; <span style="color: green; font-size: 25px;">{{p.price}} &#8377;</span></p>
+                      <a href="{% url 'customerapp:products' %}" class="btn btn-outline-success mt-2 py-3 px-4">Order Now</a>
+                    </div>
+                  </div>
+                  </div>
+                  {% endfor %}
+                 </div> 
+              </div>
+
+
+              <!-- <div class="container">
+              <div class="row">
+           
+                    <h1 class="my-4">Product Available</h1>
+                    {% for p in prod %}
+                    <div class="card cardhover shadow-lg mb-3" style="max-width: 650px;">
+                      <div class="row g-0">
+                        <div class="col-md-5">
+                          <img src="{{p.productpic.url}}" class="img-fluid rounded-start" alt="..." style="height: 270px;width: 250px;">
+                        </div>
+                        <div class="col-md-7">
+                          <div class="card-body">
+                            <h2 class="card-title">{{p.productname}}</h2>
+                            <p class="card-text" style="font-size: 17px;">MFG &nbsp;: &nbsp;{{p.mfgdate}}</p>
+                            <p class="card-text" style="font-size: 17px;">EXP &nbsp;: &nbsp;{{p.expdate}}</p>
+                            <p class="card-text" style="font-size: 17px;">Price &nbsp; :&nbsp; <span style="color: green;">{{p.price}} &#8377;</span></p>
+                            <a href="{% url 'customerapp:products' %}" class="btn btn-outline-success mt-3 py-3 px-4">Order Now</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+              </div>
+              </div> -->
+
+              
+{% endblock body %}
